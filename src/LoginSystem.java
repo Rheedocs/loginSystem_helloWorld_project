@@ -199,7 +199,7 @@ public class LoginSystem {
     }
 
     // === Hjælpemetode ===
-    // Returnerer det korrekte brugernavn med original stavemåde.
+    // Returnerer det korrekte brugernavn med original stavemåde i loggen.
     // (fx "Alice" i stedet for "alice" eller "AlIcE").
     private static String getProperName(String username) {
         for (String user : usernames) {
