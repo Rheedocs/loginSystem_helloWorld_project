@@ -100,17 +100,17 @@ public class LoginSystem {
                         logAttempt(username, false);
                         logAccountLocked(username);
                     } else {
-                    System.out.println("\n❌ Forkert adgangskode.\nDu har " + YELLOW + UNDERLINE + (maxTries - i - 1) + RESET + " forsøg tilbage. \n");
-                    logAttempt(username, false);
+                        System.out.println("\n❌ Forkert adgangskode.\nDu har " + YELLOW + UNDERLINE + (maxTries - i - 1) + RESET + " forsøg tilbage. \n");
+                        logAttempt(username, false);
+                    }
                 }
-            }
             } else {
                 System.out.println("❌ Brugernavn findes ikke. \n");
                 logAttempt(username, false);
                 return; // afslut hvis brugernavnet ikke findes
             }          // }// }
+        }
     }
-}
     // === Registrering af ny bruger ===
     public static void registerUser() {
         System.out.print("\nVælg brugernavn: ");
