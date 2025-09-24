@@ -1,5 +1,6 @@
 # LoginSystem
-Et simpelt login-system lavet af gruppen **Hello World**.  
+Et simpelt login-system lavet af gruppen **Hello World**.
+DAT-25
 
 ## Funktioner
 - Login med brugernavn og adgangskode  
