@@ -86,7 +86,7 @@ public class LoginSystem {
             String password = askPassword();
 
             if (validateUser(username)) { // Brugernavn findes
-                if (validatePassword(username, password)) { // Rigtigs password
+                if (validatePassword(username, password)) { // Rigtig password
                     welcomeUser(username);  // Succes
                     logAttempt(username, true);
                     return; // Afslut login
