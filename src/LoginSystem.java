@@ -9,7 +9,7 @@ public class LoginSystem {
     static ArrayList<String> passwords = new ArrayList<>();
 
     //Test
-
+        //Hej
     // Dato og tid format
     static LocalDateTime now = LocalDateTime.now();
     static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
