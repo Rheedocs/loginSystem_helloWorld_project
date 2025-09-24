@@ -11,7 +11,7 @@ public class LoginSystem {
     static LocalDateTime now = LocalDateTime.now();
     static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
-    //HEJ
+
 
     // Log over loginforsøg
     static ArrayList<String> loginLog = new ArrayList<>();
