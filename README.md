@@ -21,7 +21,6 @@ Programmet starter med tre brugere (user / password):
 24. September 2025 | Kl. 15:37:20
 
 --- LOGIN SYSTEM ---
-
 1. Login
 2. Registrér ny bruger
 3. Vis login-log
