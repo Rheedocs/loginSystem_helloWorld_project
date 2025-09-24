@@ -1,5 +1,5 @@
 # LoginSystem
-lavet af gruppen, Hello World.
+Lavet af gruppen, Hello World.
 
 Programmet er et simpelt login-system.
 
