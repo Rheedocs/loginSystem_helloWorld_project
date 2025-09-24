@@ -9,7 +9,7 @@ public class LoginSystem {
     static ArrayList<String> usernames = new ArrayList<>();
     static ArrayList<String> passwords = new ArrayList<>();
 
-    // Dato format
+    // Dato format med dansk formatering
     static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd. MMMM yyyy | 'Kl.' HH:mm:ss").withLocale(Locale.forLanguageTag("da-DK"));
 
     // Log over loginforsøg
@@ -69,6 +69,7 @@ public class LoginSystem {
             }
         }
     }
+
     // === Loginforsøg ===
     public static void loginAttempt() {
         int maxTries = 3;
@@ -111,6 +112,7 @@ public class LoginSystem {
             }
         }
     }
+
     // === Registrering af ny bruger ===
     // Tjekker om brugernavnet allerede findes.
     // Hvis ikke, bliver en ny bruger + kode gemt i listerne.
@@ -198,7 +200,7 @@ public class LoginSystem {
 
     // === Hjælpemetode ===
     // Returnerer det korrekte brugernavn med original stavemåde.
-    // (fx "Alice" i stedet for "alice").
+    // (fx "Alice" i stedet for "alice" eller "AlIcE").
     private static String getProperName(String username) {
         for (String user : usernames) {
             if (user.equalsIgnoreCase(username)) {
