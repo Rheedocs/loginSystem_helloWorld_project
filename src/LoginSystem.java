@@ -1,17 +1,16 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class LoginSystem {
     // Brugere og passwords
     static ArrayList<String> usernames = new ArrayList<>();
     static ArrayList<String> passwords = new ArrayList<>();
-    // Dato og tid format
-    static LocalDateTime now = LocalDateTime.now();
-    static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
-
+    // Dato format
+    static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd. MMMM yyyy | 'Kl.' HH:mm:ss").withLocale(Locale.forLanguageTag("da-DK"));
 
     // Log over loginforsøg
     static ArrayList<String> loginLog = new ArrayList<>();
@@ -35,9 +34,10 @@ public class LoginSystem {
         menu(); // start menuen
     }
 
-    // === Menu === (Person A)
+    // === Menu ===
     public static void menu() {
         while (true) {
+            LocalDateTime now = LocalDateTime.now();
             System.out.println("\n--- VELKOMMEN ---\n" + now.format(fmt));
             System.out.println("\n--- LOGIN SYSTEM ---");
             System.out.println("1. Login");
@@ -60,7 +60,7 @@ public class LoginSystem {
                         showLog();
                         break;
                     case "4":
-                        System.out.println("\n---👋 Farvel!👋---\n");
+                        System.out.println("\n---👋 Farvel!👋---");
                         return;
                     default:
                         System.out.println("Ugyldigt valg!\n");
@@ -69,55 +69,58 @@ public class LoginSystem {
             }
         }
     }
-
-    // === Loginforsøg === (Person B)
+    // === Loginforsøg ===
     public static void loginAttempt() {
         int maxTries = 3;
-
         String username = askUsername();
 
-        // Tjek om kotoen allerede er låst (case-insensitive)
+        // Tjek om kontoen allerede er låst (case-insensitive)
         for (String locked : lockedUsers) {
             if (locked.equalsIgnoreCase(username)) {
-                System.out.println("\n🔒 Kontoen " + getProperName(username) + " er låst og kan ikke bruges.\n");
+                System.out.println("\n🔒 Kontoen " + UNDERLINE + YELLOW + getProperName(username) + RESET + " er låst og kan ikke bruges.");
                 return;
             }
         }
         for (int i = 0; i < maxTries; i++) {
             String password = askPassword();
 
-            if (validateUser(username)) {
-                if (validatePassword(username, password)) {
+            if (validateUser(username)) { // Brugernavn findes
+                if (validatePassword(username, password)) { // Rigtigs password
                     welcomeUser(username);  // Succes
                     logAttempt(username, true);
-                    return;                 // Stop login
+                    return; // Afslut login
                 } else {
+                    // Forkert password
                     if (i == maxTries - 1) {
-                        System.out.println("❌ Forkert adgangskode.");
-                        System.out.println("🔒 Kontoen " + getProperName(username) + " er nu låst\n");
+                        System.out.println("\n❌ Forkert adgangskode.");
+                        System.out.println("🔒 Kontoen " + UNDERLINE + YELLOW + getProperName(username) + RESET + " er nu låst");
                         lockedUsers.add(username);
                         logAttempt(username, false);
                         logAccountLocked(username);
                     } else {
+                        // Der er stadig forsøg tilbage
                         System.out.println("\n❌ Forkert adgangskode.\nDu har " + YELLOW + UNDERLINE + (maxTries - i - 1) + RESET + " forsøg tilbage. \n");
                         logAttempt(username, false);
                     }
                 }
             } else {
-                System.out.println("❌ Brugernavn findes ikke. \n");
+                // Brugernavnet fines slet ikke
+                System.out.println("\n❌ Brugernavn findes ikke.");
                 logAttempt(username, false);
                 return; // afslut hvis brugernavnet ikke findes
-            }          // }// }
+            }
         }
     }
     // === Registrering af ny bruger ===
+    // Tjekker om brugernavnet allerede findes.
+    // Hvis ikke, bliver en ny bruger + kode gemt i listerne.
     public static void registerUser() {
         System.out.print("\nVælg brugernavn: ");
         String newUser = input.nextLine();
 
         for (String user : usernames) {
             if (user.equalsIgnoreCase(newUser)) {
-                System.out.println("❌ Brugernavn findes allerede.\n");
+                System.out.println("\n❌ Brugernavn findes allerede.");
                 return;
             }
         }
@@ -159,21 +162,26 @@ public class LoginSystem {
 
     // === Velkomstbesked ===
     public static void welcomeUser(String username) {
+        LocalDateTime now = LocalDateTime.now();
         System.out.println("\n✅ Velkommen " + getProperName(username) +
-                "! Login kl. " + now.format(fmt) + "\n");
+                "!\nLogin d. " + now.format(fmt));
     }
 
     // === Logning ===
+    // Gemmer tid, brugernavn og resultat (succes/fejl/låst)
+    // i loginLog-listen, så det kan vises senere.
     public static void logAttempt(String username, boolean success) {
-        String result = success ? "✅ Succes" : "❌ Failed";
+        String result = success ? "✅ Succes" : "❌ Fejl";
 
         String properName = getProperName(username);
+        LocalDateTime now = LocalDateTime.now();
 
         loginLog.add(now.format(fmt) + " | " + properName + " | " + result);
     }
 
     public static void logAccountLocked(String username) {
-        loginLog.add(now.format(fmt) + " | " + getProperName(username) + " | 🔒 LOCKED");
+        LocalDateTime now = LocalDateTime.now();
+        loginLog.add(now.format(fmt) + " | " + getProperName(username) + " | 🔒 LÅST");
     }
 
     public static void showLog() {
@@ -185,9 +193,12 @@ public class LoginSystem {
                 System.out.println(YELLOW + "#" + (i + 1) + RESET + " | " + loginLog.get(i));
             }
         }
+        System.out.println("--- SLUT PÅ LOG ---");
     }
 
     // === Hjælpemetode ===
+    // Returnerer det korrekte brugernavn med original stavemåde.
+    // (fx "Alice" i stedet for "alice").
     private static String getProperName(String username) {
         for (String user : usernames) {
             if (user.equalsIgnoreCase(username)) {
