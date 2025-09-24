@@ -1,7 +1,6 @@
 # LoginSystem
-Lavet af gruppen, Hello World.
-
 Programmet er et simpelt login-system.
+Lavet af gruppen, Hello World.
 
 ## Funktioner
 - Brugeren kan logge ind med brugernavn og adgangskode
@@ -23,13 +22,10 @@ Programmet starter med tre brugere:
 
 --- LOGIN SYSTEM ---
 
-Login
-
-Registrér ny bruger
-
-Vis login-log
-
-Afslut
+1. Login
+2. Registrér ny bruger
+3. Vis login-log
+4. Afslut
 Vælg (1-4): 1
 Indtast brugernavn: Alice
 Indtast adgangskode: pass1
@@ -37,3 +33,6 @@ Indtast adgangskode: pass1
 ✅ Velkommen Alice!
 Login d. 24. September 2025 | Kl. 15:37:27
 ```
+## Bemærkninger
+- Brugernavne og adgangskoder gemmes i **klartekst** i ArrayLists.  
+- Programmet er kun en **øvelsesopgave** og ikke beregnet til rigtig sikkerhed.
