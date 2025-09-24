@@ -34,5 +34,5 @@ Indtast adgangskode: pass1
 Login d. 24. September 2025 | Kl. 15:37:27
 ```
 ## Bemærkninger
-- Brugernavne og passwords ligger i **klartekst** i koden – det er kun til øvelse.  
+- Brugernavne og passwords ligger i **klartekst** i koden, det er kun til øvelse.  
 - Programmet er kun for at lege med Java/ArrayLists, ikke til at beskytte ens WoW eller Steam account 😅
