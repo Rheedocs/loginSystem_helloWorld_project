@@ -105,10 +105,10 @@ public class LoginSystem {
                     }
                 }
             } else {
-                // Brugernavnet fines slet ikke
+                // Brugernavnet findes slet ikke
                 System.out.println("\n❌ Brugernavn findes ikke.");
                 logAttempt(username, false);
-                return; // afslut hvis brugernavnet ikke findes
+                return; // Afslut hvis brugernavnet ikke findes
             }
         }
     }
