@@ -7,12 +7,11 @@ public class LoginSystem {
     // Brugere og passwords
     static ArrayList<String> usernames = new ArrayList<>();
     static ArrayList<String> passwords = new ArrayList<>();
-
-    //Test
-        //Hej
     // Dato og tid format
     static LocalDateTime now = LocalDateTime.now();
     static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+    //HEJ
 
     // Log over loginforsøg
     static ArrayList<String> loginLog = new ArrayList<>();
