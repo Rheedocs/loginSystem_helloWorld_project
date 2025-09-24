@@ -21,7 +21,6 @@ Programmet starter med tre brugere (user / password):
 24. September 2025 | Kl. 15:37:20
 
 --- LOGIN SYSTEM ---
-
 1. Login
 2. Registrér ny bruger
 3. Vis login-log
@@ -34,5 +33,5 @@ Indtast adgangskode: pass1
 Login d. 24. September 2025 | Kl. 15:37:27
 ```
 ## Bemærkninger
-- Brugernavne og passwords ligger i **klartekst** i koden – det er kun til øvelse.  
+- Brugernavne og passwords ligger i **klartekst** i koden, det er kun til øvelse.  
 - Programmet er kun for at lege med Java/ArrayLists, ikke til at beskytte ens WoW eller Steam account 😅
