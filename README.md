@@ -34,6 +34,8 @@ Indtast adgangskode: pass1
 ✅ Velkommen Alice!
 Login d. 24. September 2025 | Kl. 15:37:27
 ```
-## Bemærkninger
-- Brugernavne og passwords ligger i **klartekst** i koden, det er kun til øvelse.  
-- Programmet er kun for at lege med Java/ArrayLists, ikke til at beskytte ens WoW eller Steam account 😅
+### Bemærkninger
+- Brugernavne og passwords ligger i klartekst i koden, det er kun til øvelse.  
+- Basisopgaven krævede brug af arrays (`String[]`).  
+- Vi valgte at udvide med **ArrayList** for at kunne implementere bonusdelen (oprette nye brugere), da arrays ikke kan vokse.  
+- Programmet er kun til at øve Java og datastrukturer – ikke til at beskytte ens WoW eller Steam account 😅  
