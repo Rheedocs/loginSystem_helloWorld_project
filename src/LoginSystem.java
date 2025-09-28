@@ -9,7 +9,7 @@ public class LoginSystem {
     static ArrayList<String> usernames = new ArrayList<>();
     static ArrayList<String> passwords = new ArrayList<>();
 
-    // Dato format med dansk formatering
+    // Dato format, med dansk formatering
     static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd. MMMM yyyy | 'Kl.' HH:mm:ss").withLocale(Locale.forLanguageTag("da-DK"));
 
     // Log over loginforsøg
